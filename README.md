@@ -1,4 +1,5 @@
-Oogle
+Oogle.
+
 The world’s first Un-Search Engine where we’ve eliminated the burden of accuracy. 
 It is a high-performance, low-accuracy search platform designed to save you from the burden of "facts" and "relevance." 
 
