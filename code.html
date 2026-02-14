@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oogle</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding-top: 50px; background-color: ivory; }
+        .logo { font-size: 80px; font-weight: bold; margin-bottom: 30px; letter-spacing: -2px; }
+        .O { color: #EA4335; } .o { color: #FBBC05; } .g { color: #4285F4; } .l { color: #34A853; } .e { color: #EA4335; }
+        
+        .search-box { width: 500px; padding: 15px 25px; border: 1px solid #e5e4df; border-radius: 24px; font-size: 18px; outline: none; transition: 0.2s; }
+        .search-box:hover, .search-box:focus { box-shadow: 0 1px 6px rgba(32,33,36,0.28); }
+        
+        .buttons { margin-top: 30px; }
+        button { background: #e2ddd3; border: 1px solid #e2ddd3; border-radius: 4px; color: #43413c; font-size: 14px; margin: 11px 4px; padding: 10px 16px; cursor: pointer; }
+        button:hover { border: 1px solid #e0dfda; color: #242320; }
+
+        #results { margin-top: 50px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; display: none; }
+        .result-item { margin-bottom: 25px; }
+        .result-item h5 { color: #1a0dab; font-size: 17px; font-style: italic;}
+        .result-item a { color: #1a0dab; font-size: 20px; text-decoration: none; }
+        .result-item p { color: #4d5156; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="logo"><span class="O">O</span><span class="o">o</span><span class="g">g</span><span class="l">l</span><span class="e">e</span></div>
+
+    <input type="text" id="searchBar" class="search-box" placeholder="Ask anything... (example: how to cook pasta)">
+
+    <div class="buttons">
+        <button onclick="generateChaos()">Search</button>
+        <button id="click" onmouseover="dodge()">Don't Click Me.</button>
+    </div>
+
+    <div id="results">
+            <p style="color: #70757a; font-size: 14px;">About 0.000001 results (0.67 seconds)</p>
+            <div id="chaos-target"></div>
+    </div>
+
+    <script>
+        const chaosDatabase = [
+                {
+                    title: "Error 909: My keyboard is judging my search history", 
+                    desc: "The 'Enter' key has requested a divorce. Please apologize to your hardware before searching again."
+                },
+                {
+                    title: "Proof that gravity is just a suggestion", 
+                    desc: "Simply tell the ground you are busy and it will stop pulling you down. Scientifically proven... "
+                },
+                { 
+                    title: "How to exit the Simulation (Free Trial)", 
+                    desc: "Walk into a corner and jump 14 times while holding a bagel. If you see code, you've gone too far. Come back." 
+                },
+                { 
+                    title: "How to pay my taxes in high-fives", 
+                    desc: "The IRS currently accepts 400,000 high-fives as a substitute for income tax. Must be delivered in person to a very confused agent." 
+                },
+                { 
+                    title: "Is my ceiling fan plotting my downfall?", 
+                    desc: "If it's spinning, it's thinking. Try staring at it for 3 hours without blinking to establish dominance." 
+                },
+                { 
+                    title: "How to trick your fridge into thinking it's a sauna", 
+                    desc: "Tell it very convincing lies about the weather. If it starts sweating, you've successfully confused the compressor." 
+                },
+                { 
+                    title: "Proof that birds are actually just government drones", 
+                    desc: "Have you ever seen a baby pigeon? No. Because they are assembled in a factory in Antartica. Wake up, people!" 
+                }
+        ];
+
+        function generateChaos() {
+            const resultDiv = document.getElementById('results');
+            const searchVal = document.getElementById('searchBar').value;
+            
+            if(!searchVal) return alert("Search for something, even if it's dumb.");
+
+            const randomWrong = chaosDatabase[Math.floor(Math.random() * chaosDatabase.length)];
+
+            resultDiv.innerHTML = `
+                <div class="result-item">
+                    <h5 id = "head5">Did you mean</h5>
+                    <a href="#">${randomWrong.title}</a>
+                    <p>${randomWrong.desc}</p>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+        }
+
+        function dodge() {
+            const btn = document.getElementById('click');
+            btn.style.position = 'absolute';
+            btn.style.top = Math.random() * 80 + 'vh';
+            btn.style.left = Math.random() * 80 + 'vw';
+        }
+    </script>
+</body>
+</html>
